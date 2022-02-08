@@ -9,6 +9,7 @@
     <p>This is standard HTML</p>
     <?php
     echo 'This was generated using php!';
+    echo "I'm gonna be good at this!"
     ?> 
     </body>
 </html>
