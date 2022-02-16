@@ -144,6 +144,13 @@
             limit - specifies the number of array elements to return (optional)
             )
             */
+        //implode() - takes an array and joins elements into a string. Returns a string containing
+        //            a string representation of all array elements: implode(
+            /*
+            separator - specifies where to break the string
+            array - which array is to be used
+            )
+            */
         $var = 'something';
         echo substr($var, 1); //omething
         echo "<br/>";
@@ -221,6 +228,170 @@
         //foo
         //*
         //1023
+
+        // $people = array('Laura', 'Katie', 'Bhavna', 'George');
+        // $person = implode(' ', $people);
+        // echo $person;
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+        //ARRAYS//
+
+        //Indexed Arrays//
+        //$cars = array("Volvo", "BMW", "Toyota");
+        //echo "I like " . $cars[0] . ", " . $cars[1] . " and " . $cars[2] . ".";
+
+        //Manually indexed
+        // $cars [0] = "Volvo";
+        // $cars [1] = "BMW";
+        // $cars [2] = "Toyota";
+        // echo "I like " . $cars[0] . ", " . $cars[1] . " and " . $cars[2] . ".";
+
+        //Associative Arrays - used to store key value pairs
+        $people = array('Brad' => 35, 'Joe' => 32, 'William' => 37);
+        echo $people ['Brad'];
+        //displays 35 on the screen
+
+        //Multi-Dimentional Arrays - allow you to define arrays within an array(nested array)
+        $cars = array(
+            array('Honda', 20, 10), //index 0
+            array('Toyota', 30, 20), //index 1
+            array('Ford', 23, 12), //index 2
+        );
+
+        echo $cars[1][0]; //print index 1, Toyota array, index position 0 displays Toyota
+        echo $cars[0][2]; //print index 0, Honda array, index position 2 displays 10
+
+        //value of an array can be another array. enables creation of recursive and multi-dimentional arrays
+        $multidimentional = array(
+            "fruits" => array ("a" => "orange", "b" => "banana", "c" => "apple"),
+            "numbers" => array (10, 20, 30, 40, 50),
+            "holes" => array ("first", 5 => "second", "third"));
+
+            echo $multidimentional["holes"][5]; //output - second
+            echo $multidimentional["fruits"]["a"]; //output - orange
+            echo $multidimentional["numbers"][3]; //output - 40
+            unset($multidimentional["holes"][0]); //removes "first"
+            print_r($multidimentional); //print all the elements of array
+
+            //php arrays can contain an integer and string keys at the same time
+            $array = ["foo" => "bar", "bar" => "foo", 
+                100 => -3000, -500 => 1000];
+            var_dump($array);
+
+        //array elements can be accessed using the array[key] syntax
+        $info = array("foo" => "bar", 42 => 24, "arr" => array(1,2,3,4,5));
+        echo $info["foo"]; //displays bar
+        echo $info[42]; //displays 24
+        print_r($info ['arr']); //prints nested array
+        echo $info['arr'][0]; //displays the index [0] which is 1
+
+        //Modifying existing arrays - done by assigning values to the array, specifying the key in brackets
+        //                          - key can be omitted, resulting in empty brackets []
+        //                          - if no key is specified, maximum of existing integer indicies is taken
+        //                          - new key value will be that maximum value plus 1
+        //                          - if no integer indices exist, key will be 0
+        $arr = array(5 => 1, 12 => 2);
+        $arr[] = 56;    //This is same as $arr[13] = 56;
+        $arr["x"] = 42; //Adds a new element to the array with key "x"
+        $arr[] = 66;    //This is the same as $arr[14] = 66;
+        $arr[13] = 79;  //This replaces the calue at index 13
+        unset($arr[5]); //This removes the element from the array
+        unset($arr);    //This deletes the entire array
+
+        //ARRAY SORT FUNCTIONS:
+        /*
+        sort() - sort arrays in ascending order
+        rsort() - sort arrays the descending order
+        asort() - sort associative arrays in ascending order, according to the value
+        ksort() - sort associative arrays in scending order, according to the key
+        arsort() - sort associative arrays in descending order, according to the value
+        krsort() - sort associative arrays in descending order, according to the key
+        */
+        
+        $fruits = array("lemon", "orange", "banana", "apple");
+            sort($fruits);
+
+            foreach ($fruits as $title => $index) {
+                echo "fruits[" . $title . "] = " . $index ."<br/>"; //concatenate
+            }
+            /*
+            Output:
+            fruits[0] = apple
+            fruits[1] = banana
+            fruits[2] = lemon
+            fruits[3] = orange
+            */
+
+            //Array range function
+            /*
+            - allows you to create an array containing a range from start to end, inclusive
+            - if a step value is given, it will be used as the increment between elements in the sequence
+            - the step should be given as a positive number
+            - if not specified, the step will default to 1
+            */
+            $numbers = range(0, 10);
+            foreach ($numbers as $number){
+                echo $number. " ";
+            }
+            //Output: 0 1 2 3 4 5 6 7 8 9 10
+            
+            //Array rand function
+            /*
+            - picks one or more random entries out of an array and returns the key(or keys) of random entries
+            */
+            $input = array("Apple", "Mango", "Banana", "Orange", "Grapes");
+            $rand_keys = array_rand($input, 2);
+            echo $input[$rand_keys[0]] . "<br/>";
+            echo $input[$rand_keys[1]] . "<br/>";
+
+            //Array slice function
+            /*
+            - extract a slice of the array
+            - returns the sequence of elements from the array as specified by the offset and length params
+            */
+            $input = array("a", "b", "c", "d", "e");
+            $output = array_slice($input, 2);
+            print_r($output); //returns "c", "d", and "e"
+
+            $output = array_slice($input, 0, 3);
+            print_r($output); //returns "a", "b", and "c"
+
+            //Array unshift function
+            /*
+            - array_unshift() function adds one or more elements to the beginning of an array
+            - returns the new number of elements in the array
+            */
+            $queue = array("orange", "banana");
+            array_unshift($queue, "apple", "raspberry");
+            print_r($queue);
+            //Output: Array([0] => apple [1] => raspberry [2] => orange [3] => banana)
+
+            //Array key exists function
+            /*
+            - array_key_exists() function checks if the given key exists in the array
+            - returns TRUE if the given key is set in the array FALSE otherwise
+            */
+            $search_array = array('first' => 1, 'second' => 4, 3 => 'apple');
+            if (array_key_exists('first', $search_array)) {
+                echo "The 'first key is in the array";
+            }
+            if (in_array("apple", $search_array)) {
+                echo "<br/>";
+                echo "The 'apple' element is in the array";
+            }
+            //Output: 
+            //The 'first' key is in the array
+            //The 'apple' element is in the array
+
+            //MORE ARRAY FUNCTIONS:
+            /*
+            -> array_push() - push one or more elements onto the end of an array
+            -> array_pop() - pop the element off the end of array
+            -> array_shift() - shift an element off the beginning of an array
+            -> array_diff() - computes the difference of arrays
+            -> array_reverse() - return an array with elements in reverse order
+            */
         ?> 
     </body>
 </html>
