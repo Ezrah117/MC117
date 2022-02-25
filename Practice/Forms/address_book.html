@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Lab 3</title>
+    </head>
+        <body>
+            <form action="forms.php" method="POST">
+                <li>
+                    <label for="first_name">First Name:</label>
+                    <input type="text" name="first_name" maxlength="20" required/>
+                </li>
+                <li>
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" name="last_name" maxlength="20" required/>
+                </li>
+                <li>
+                    <label for="mobile_no">Mobile No:</label>
+                    <input type="tel" name="mobile_no" placeholder="eg.+353860040400"/>
+                </li>
+                <li>
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" required/>
+                </li>
+                <li>
+                    <label for="skype">Skype:</label>
+                    <input type="text" name="skype" maxlength="30"/>
+                </li>
+                <li>
+                    <label for="address">Address</label>
+                    <textarea name="address" cols="30" rows="6"></textarea>
+                </li>
+                <li>
+                    <button class="submit" type="submit">Add Contact</button>
+                </li>
+            </form>
+        </body>
+</html>
