@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <title>Lab 2</title>
     </head>
-
     <body>
         <?php
         //QUESTION 1
